@@ -21,17 +21,22 @@ public class Persona {
         this.cedula = cedula;
         this.nombre = nombre;
     }
-    public void mostrarHijos(){
+    public String mostrarHijos(){
+        String salida = "";
         if(hijos.values().isEmpty()){
-            System.out.println("sin hijos");
-        
+            //System.out.println("sin hijos");
+            salida = " SIN HIJOS";
         }else{
-            System.out.println("hijos");
+            //System.out.println("hijos");
+            salida = " HIJOS";
             for(Map.Entry <Integer, Persona> entry: hijos.entrySet()){
-            System.out.println(entry.getValue().getNombre());
-            System.out.println(entry.getValue().getCedula());
+            //System.out.println(entry.getValue().getNombre());
+            salida = salida+" nombre="+entry.getValue().getNombre();
+            //System.out.println(entry.getValue().getCedula());
+            salida = salida+" cedula="+entry.getValue().getCedula();
             }
         }
+        return salida;
     }
 
     public void setCedula(Integer cedula) {

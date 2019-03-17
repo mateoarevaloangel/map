@@ -83,7 +83,7 @@ public class MetodoPrincipal {
                     }
                     break;
                 case "b":
-                    buscar(map);
+                    buscarPersona(map);
                     break;
                 default:
                     System.out.println ("Opcion no valida.");
@@ -148,5 +148,70 @@ public class MetodoPrincipal {
         }catch(Exception e){
             System.out.println("busqueda terminada");
         }                                        
+    }
+    public static String buscarPersona(HashMap<Integer, Persona> map){
+        String salida = "";
+        String entradaTexto;
+        Integer clave;
+        Persona padre;
+        int id=0;
+        //System.out.println ("Ingrese cedula");
+        //Scanner entradaEscaner = new Scanner (System.in);
+        try{
+            //entradaTexto=entradaEscaner.nextLine ();
+            clave=1070980393; 
+            for(Map.Entry <Integer, Persona> entry: map.entrySet()){
+            //System.out.println(map.get(clave).getCedula());
+            if(clave.equals(entry.getValue().getCedula())){
+                System.out.println(map.get(clave).getCedula());
+                id=1;               
+                //System.out.println("clave=" + map.get(clave).getCedula() + ", nombre:" + map.get(clave).getNombre()+"\n");
+                salida = salida+"nombre="+map.get(clave).getNombre()+" cedula="+map.get(clave).getCedula();
+                salida = salida + map.get(clave).mostrarHijos();
+            }
+            }
+            if(id==0){                    
+                for(Persona persona:map.values()){ 
+                    
+                    for(int i=0; i<persona.getHijos().size();i++ ){  
+                        padre=persona;
+                        if(persona.getHijos().containsKey(clave)){
+                            id=1;
+                            System.out.println(id);
+                            //System.out.println("clave=" + persona.getHijos().get(clave).getCedula() + ", nombre:" + persona.getHijos().get(clave).getNombre()+"\n");
+                            salida = salida+"nombre="+persona.getHijos().get(clave).getNombre()+" cedula="+persona.getHijos().get(clave).getCedula();
+                            salida = salida + persona.getHijos().get(clave).mostrarHijos();
+                            //System.out.println("padre"+padre.getCedula()+" "+padre.getNombre());
+                            salida = salida+" PADRE nombre="+padre.getNombre()+" cedula="+padre.getCedula();
+                        }
+                    }
+                }                
+            }
+            if(id==0){
+                for(Persona persona:map.values()){                    
+                    for(int i=0; i<persona.getHijos().size();i++ ){
+                        for(Persona persona1:persona.hijos.values()){
+                            padre=persona1;
+                            if(persona1.getHijos().containsKey(clave)){
+                                id=1;
+                                //System.out.println("clave=" + persona1.getHijos().get(clave).getCedula() + ", nombre:" + persona1.getHijos().get(clave).getNombre()+"\n");
+                                salida = salida+"nombre="+persona.getHijos().get(clave).getNombre()+" cedula="+persona.getHijos().get(clave).getCedula();
+                                //System.out.println("padre"+padre.getCedula()+" "+padre.getNombre());
+                                salida = salida+" PADRE nombre="+padre.getNombre()+" cedula="+padre.getCedula();
+                                salida = salida + persona1.getHijos().get(clave).mostrarHijos();
+                            }
+                        }                        
+                    }
+                }
+            }
+            if(id==0){
+                System.out.println("persona no registrada\n");
+            }
+        
+        }catch(Exception e){
+            System.out.println("busqueda terminada\n");
+        }             
+        System.out.println(salida);
+        return salida;
     }
 }
