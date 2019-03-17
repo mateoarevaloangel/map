@@ -16,7 +16,9 @@ import static org.junit.Assert.*;
 
 /**
  *
+ * @author daniel
  * @author MateoG
+ * @version 1.0
  */
 public class MetodoPrincipalTest {
     
@@ -38,7 +40,9 @@ public class MetodoPrincipalTest {
     @After
     public void tearDown() {
     }
-    
+    /**
+     * Prueba unitaria para el metodo buscarPersona de la clase MetodoPrincipal
+     */
     @Test
     public void testBuscarPersona() {
         HashMap<Integer, Persona> map = new HashMap<Integer, Persona>();

@@ -12,9 +12,14 @@ import java.util.Scanner;
 /**
  *
  * @author daniel
+ * @author MateoG
+ * @version 1.0
  */
 public class MetodoPrincipal {
-    
+    /**
+     * Método para llenar un hashmap con abuelos padres e hijos
+     * @return devuelve el hashmap con valores precargados
+     */   
     public static HashMap<Integer, Persona> llenar(){
         HashMap<Integer, Persona> map1 = new HashMap<Integer, Persona>();
         HashMap<Integer, Persona> map2 = new HashMap<Integer, Persona>();
@@ -44,6 +49,11 @@ public class MetodoPrincipal {
         map.put(1080980392,abuelo2);
         return map;
     }
+    /**
+     * Método para ingresar cedula y nombre de la persona
+     * @param map recibe hashmap de persona
+     * @return devuelve el hashmap con la persona
+     */   
     public static HashMap<Integer, Persona> ingresar(HashMap<Integer, Persona> map){
         Integer cedula;
         String entradaTexto;
@@ -63,6 +73,9 @@ public class MetodoPrincipal {
          
         return map;
     }
+    /**
+     * Método para menu de opciones
+     */   
     public static void menu(){
         HashMap<Integer, Persona> map = new HashMap<Integer, Persona>();
         String entradaTexto;
@@ -92,6 +105,10 @@ public class MetodoPrincipal {
             }            
         }
     }
+    /**
+     * Método buscar la familia de una persona ingresando la cedula
+     * @param map recibe hashmap de persona
+     */   
     public static void buscar(HashMap<Integer, Persona> map){
         String entradaTexto;
         Integer clave;
@@ -149,6 +166,10 @@ public class MetodoPrincipal {
             System.out.println("busqueda terminada");
         }                                        
     }
+    /**
+     * Método buscar la familia de una persona (método al cual se le aplica una prueba unitaria)
+     * @param map recibe hashmap de persona
+     */  
     public static String buscarPersona(HashMap<Integer, Persona> map){
         String salida = "";
         String entradaTexto;

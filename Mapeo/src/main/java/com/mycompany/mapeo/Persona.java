@@ -11,16 +11,35 @@ import java.util.Map;
 /**
  *
  * @author daniel
+ * @author MateoG
+ * @version 1.0
  */
 public class Persona {
+    /**
+     * Variable para guardar la cedula de la persona
+     */   
     Integer cedula;
+    /**
+     * Variable para guardar el nombre de la persona
+     */
     String nombre;
+    /**
+     * Hashmap para guardar los hijos de la persona
+     */
     HashMap<Integer, Persona> hijos;
-    
+    /**
+     * Constructor con cedula y nombre
+     * @param cedula recibe el numero de cedula de la persona
+     * @param nombre recibe el nombre de la persona
+     */   
     public Persona(Integer cedula, String nombre) {
         this.cedula = cedula;
         this.nombre = nombre;
     }
+    /**
+     * Método para mostrar los hijos de la persona
+     * @return devuelve una variable tipo String con los hijos de la persona
+     */   
     public String mostrarHijos(){
         String salida = "";
         if(hijos.values().isEmpty()){
